@@ -8,11 +8,11 @@ return array(
 	'extentions' => array('888999'), // список внешних номеров, через запятую
 	'context' => 'dial_out', //исходящий контекст для оригинации звонка
 	'asterisk' => array( // настройки для подключения к астериску
-		    'host' => '10.100.111.249',
+		    'host' => '10.***.***.***',
 		    'scheme' => 'tcp://',
 		    'port' => 5038,
 		    'username' => 'callme',
-		    'secret' => 'Lp1238_f23r-3rygJ',
+		    'secret' => '*********',
 		    'connect_timeout' => 10000,
 		    'read_timeout' => 10000
 		),
