@@ -1,0 +1,30 @@
+image: maven:3.5.3
+
+stages:
+  - prepare
+  - build
+  - package
+  - release
+  - tag
+  - deploy
+  - mirror
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  UPSTREAM_REPOSITORY: "git@github.com:broadcastaddress/callme.git"
+  UPSTREAM_BRANCH: "remote-test"
+
+mirror-master:
+  stage: mirror
+  variables:
+    GIT_SUBMODULE_STRATEGY: none
+    GIT_STRATEGY: clone
+  cache: {}
+  only:
+    - remote-test
+  script:
+    - git remote add mirror $UPSTREAM_REPOSITORY
+    - git remote show mirror
+    - git fetch mirror
+    - git push --progress mirror HEAD:$UPSTREAM_BRANCH
+
